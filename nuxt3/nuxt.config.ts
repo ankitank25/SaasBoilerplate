@@ -1,0 +1,62 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  modules: [
+    "@pinia/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "nuxt-icon",
+  ],
+  colorMode: {
+    classSuffix: "",
+  },
+  app: {
+    head: {
+      titleTemplate: "%s | SaasCore",
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+    },
+  },
+  runtimeConfig: {
+    public: {
+      appName: process.env.APP_NAME || "SUNLOTUS - SAAS",
+      apiBaseUrlHost: process.env.API_BASE_URL_HOST || "http://localhost:8000",
+      apiBaseUrlPath: process.env.API_BASE_URL_PATH || "api",
+      deviceName: process.env.DEVICE_NAME || "Website",
+      tokenCookieName: "XSRF-Token",
+      minPasswordLength: process.env.MIN_PASSWORD_LENGTH || 8,
+      routes: {
+        register: "/register",
+        login: "/login",
+        emailVerify: "/email-verify",
+        account: "/account",
+        admin: "/admin",
+        settings: "/admin/settings",
+      },
+      apiRoutes: {
+        register: "/auth/register",
+        login: "/auth/login",
+        reAuthenticate: "/auth/re-authenticate",
+        me: "/auth/me",
+        logout: "/auth/logout",
+        logoutAll: "/auth/logout-all",
+        forgotPassword: "/auth/forgot-password",
+        resetPassword: "/auth/reset-password",
+        accountUpdateDelete: "/auth/user/account/USERID",
+        userMeta: "/auth/user/meta",
+        userNotification: "/auth/user/notifications",
+        userSessions: "/auth/sessions",
+        userSessionDelete: "/auth/session/SESSIONID",
+        userCurrentSpace: "/auth/me/space/SPACEID",
+        spaces: "/space",
+        spaceSendInvitation: "/space/invite/SPACEID",
+        spaceInvitationAccept: "/space/invite/accept/INVITATIONID",
+        spaceInvitationReject: "/space/invite/reject/INVITATIONID",
+        spaceInvitationDelete: "/space/invite/INVITATIONID",
+        spaceRole: "/space/SPACEID/role",
+        spaceRoleDelete: "/space/SPACEID/role/ROLEID",
+        spaceRoleResources: "/space/role/resources",
+      },
+      adminAreaUserRoles: ["admin", "support"],
+    },
+  },
+});
